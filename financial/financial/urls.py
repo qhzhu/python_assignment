@@ -14,8 +14,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from app import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/', include('app.urls')),
 ]
+
+# curl -X GET "http://localhost:8000/api/financial_data?start_date=2023-01-01&end_date=2023-01-14&symbol=IBM&limit=3&page=2"
+# curl -X GET "http://localhost:8000/api/statistics?start_date=2023-01-01&end_date=2023-01-31&symbol=IBM"
