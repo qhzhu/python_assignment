@@ -23,4 +23,4 @@ urlpatterns = [
 ]
 
 # curl -X GET "http://localhost:8000/api/financial_data?start_date=2023-01-01&end_date=2023-01-14&symbol=IBM&limit=3&page=2"
-# curl -X GET "http://localhost:8000/api/statistics?start_date=2023-01-01&end_date=2023-01-31&symbol=IBM"
+# curl -X GET "http://localhost:5000/api/statistics?start_date=2023-01-01&end_date=2023-01-31&symbol=IBM"

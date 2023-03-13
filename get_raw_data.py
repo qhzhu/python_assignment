@@ -2,6 +2,8 @@ import requests
 import sqlite3
 import os
 from sqlite3 import Error
+import configparser
+import os
 
 def create_connection(db_file):
     """ create a database connection to the SQLite database
@@ -22,8 +24,21 @@ def symbol_request(symbol):
     :param symbol: company info (IBM or APPL)
     :return: None
     """
+    
+    # Read API_KEY information
+    try:
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        config = configparser.ConfigParser()
+        config.read(os.path.join(current_dir, '.env'))
+        api_key = config['api']['ALPHAVANTAGE_API_KEY']
+    except:
+        raise Exception(
+            "Unable to read ALPHAVANTAGE_API_KEY. Please check your.env file conatains ALPHAVANTAGE_API_KEY."
+        )
+    
     conn = None
     try:
+        # api_key = os.getenv("ALPHAVANTAGE_API_KEY")
 
         url = "https://www.alphavantage.co/query"
 
@@ -31,7 +46,7 @@ def symbol_request(symbol):
             "function": "TIME_SERIES_DAILY_ADJUSTED",
             "symbol": symbol,
             "outputsize": "compact",
-            "apikey": "3O453UUPJGFOOJFM" # replace here with your own api_key
+            "apikey": api_key
         }
         
         response = requests.get(url, params=params) 
