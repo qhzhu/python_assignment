@@ -34,7 +34,7 @@ Please also make sure you have **Docker** installed as it is used for containeri
     Feel free to change the above parmeters for more tests.
 
 ## Notes
-Due to limited time by personal reasons (Get infected with COVID), the containerization operations have not been tested by myself. Therefore, if the docker commands fail, please install all the dependancies by yourself and replace **step 3-5** in the above guides by the following command:
+If the docker commands fail, please install all the dependancies by yourself and replace **step 3-5** in the above guides by the following command:
     ```
     python /financial/manage.py runserver 5000
     ```
